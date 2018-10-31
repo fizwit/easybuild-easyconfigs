@@ -22,20 +22,17 @@ source_urls = ['https://github.com/uclouvain/openjpeg/archive']
 sources = ['v%(version)s.zip']
 checksums = ['e0bd4ee9ab6e4f3a581fca5e01fbfb45a8ab9062baeddd1211741531b53fe07d']
 
-separate_build_dir = True
-
 builddependencies = [
     ('binutils', '2.30'),
-    ('CMake', '3.11.4')
+    ('CMake', '3.11.4'),
 ]
 
+separate_build_dir = True
+
 sanity_check_paths = {
-    'files': ['bin/opj_compress',
-              'bin/opj_decompress',
-              'bin/opj_dump',
-              'include/openjpeg-2.3/openjpeg.h',
-              'lib/libopenjp2.%s' % SHLIB_EXT],
-    'dirs': ['bin', 'include', 'lib'],
+    'files': ['bin/opj_compress', 'bin/opj_decompress', 'bin/opj_dump',
+              'include/openjpeg-%(version_major_minor)s/openjpeg.h', 'lib/libopenjp%%(version_major)s.%s' % SHLIB_EXT],
+    'dirs': [],
 }
 
 moduleclass = 'lib'
